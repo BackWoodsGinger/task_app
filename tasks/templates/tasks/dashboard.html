@@ -1,0 +1,70 @@
+{% extends "tasks/base.html" %}
+{% load static %}
+{% block title %}Task Dashboard{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Task Dashboard</h2>
+
+    <!-- Table for Incomplete Tasks -->
+    <h3>Incomplete Tasks</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for task in incomplete_tasks %}
+            <tr>
+                <td>{{ task.title }}</td>
+                <td>{{ task.description }}</td>
+                <td>
+                    <a href="{% url 'assign_task' task.id %}" class="btn btn-primary btn-sm">Assign</a>
+                    {% if task.assignment_set.exists %}
+                        {% for assignment in task.assignment_set.all %}
+                            {% if not assignment.completed and assignment.assigned_to == request.user %}
+                                <a href="{% url 'complete_task' assignment.id %}" class="btn btn-success btn-sm">Complete</a>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Table for Completed Tasks -->
+    <h3>Completed Tasks</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Completed By</th>
+                <th>Completed At</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for task in completed_tasks %}
+            {% for assignment in task.assignment_set.all %}
+                {% if assignment.completed %}
+                <tr>
+                    <td>{{ task.title }}</td>
+                    <td>{{ task.description }}</td>
+                    <td>{{ assignment.assigned_to.username }}</td>
+                    <td>{{ assignment.completed_at }}</td>
+                    <td>
+                        <a href="{% url 'task_details' assignment.id %}" class="btn btn-info btn-sm">View Details</a>
+                    </td>
+                </tr>
+                {% endif %}
+            {% endfor %}
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

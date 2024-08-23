@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{% block title %}Task Manager{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/fontawesome.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/master.css' %}">
+</head>
+<body>
+    <header class="navbar navbar-expand-lg navbar-dark bg-light" style="background-color: #2a1e79 !important">
+        <a class="navbar-brand" href="#">
+            <img src="{% static 'images/tube-fab-roman-engineering.jpg' %}" width="70" height="30" class="d-inline-block align-top" alt="Logo">
+            Task Assignment
+        </a>
+    </header>
+
+    <main role="main" class="container mt-5 mb-5">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <nav class="navbar navbar-expand navbar-light fixed-bottom" style="background-color: #2a1e79; color: white;">
+        <div class="container-fluid d-flex justify-content-around">
+            <a class="nav-link" href="{% url 'dashboard' %}" style="color: white; border-right: 1px solid silver; padding-right: 15px;">Dashboard</a>
+            <a class="nav-link" href="{% url 'create_task' %}" style="color: white; border-right: 1px solid silver; padding-right: 15px;">Create Task</a>
+            <form method="POST" action="{% url 'logout' %}">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-secondary" style="background-color: #2a1e79; color: white; border: none;">Logout</button>
+            </form>
+        </div>
+    </nav>
+
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>

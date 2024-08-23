@@ -1,0 +1,19 @@
+{% extends "tasks/base.html" %}
+{ load static }
+{% block content %}
+<div class="container">
+    <h2>Task Details</h2>
+    <p><strong>Task:</strong> {{ assignment.task.title }}</p>
+    <p><strong>Description:</strong> {{ assignment.task.description }}</p>
+    <p><strong>Completed By:</strong> {{ assignment.assigned_to.username }}</p>
+    <p><strong>Completed At:</strong> {{ assignment.completed_at }}</p>
+    <p><strong>Observations:</strong> {{ assignment.observations }}</p>
+    
+    {% if assignment.completion_image %}
+    <p><strong>Completion Image:</strong></p>
+    <img src="{{ assignment.completion_image.url }}" class="img-fluid" alt="Completion Image">
+    {% endif %}
+    
+    <a href="{% url 'dashboard' %}" class="btn btn-primary">Back to Dashboard</a>
+</div>
+{% endblock %}
