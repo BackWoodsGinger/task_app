@@ -10,9 +10,6 @@ __pycache__/
 # Ignore Django migrations
 */migrations/*
 
-# Ignore media and static files
-media/
-static/
 
 # Ignore sensitive files and database
 db.sqlite3

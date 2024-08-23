@@ -1,0 +1,49 @@
+body, h1, h2, h3, h4, h5, h6, p, a, div, span, button, input, textarea {
+  font-family: 'Verdana', sans-serif !important;
+}
+
+.navbar.header {
+  background-color: #2a1e79 !important; /* Navy Blue */
+  color: white !important;
+}
+
+.navbar.header .navbar-brand {
+  color: white !important;
+}
+
+.navbar.header .navbar-brand img {
+  filter: brightness(0) invert(1) !important; /* Make logo white */
+}
+
+.navbar.header .navbar-nav .nav-link {
+  color: white !important;
+}
+
+.container {
+  padding-bottom: 60px; /* Adjust for fixed footer */
+}
+
+.navbar.fixed-bottom {
+  background-color: #2a1e79 !important; /* Navy Blue */
+  color: white !important;
+}
+
+.navbar.fixed-bottom .nav-link {
+  color: white !important;
+}
+
+.navbar.fixed-bottom .nav-link.nav-item-separator {
+  border-right: 1px solid silver;
+  padding-right: 15px;
+}
+
+.navbar.fixed-bottom .nav-link.nav-item-separator:last-child {
+  border-right: none;
+}
+
+@media (max-width: 768px) {
+  main.container {
+      margin-top: 60px !important; /* Adjust for smaller screens */
+      padding-bottom: 50px !important; /* Adjust for smaller screens */
+  }
+}

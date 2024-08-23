@@ -1,0 +1,77 @@
+/* General styles */
+#header {
+    height: 50px;
+    background: #10284e;
+    color: #fff;
+    display: flex;
+    align-items: center; /* Center the content vertically */
+    justify-content: space-between; /* Space out the content */
+    padding: 0 10px; /* Add some padding */
+}
+
+#header img {
+    max-height: 100%; /* Ensure the image does not exceed the header's height */
+    width: auto; /* Maintain aspect ratio */
+}
+
+#branding h1 {
+    color: #fff;
+    font-size: 1.5rem; /* Adjust font size if necessary */
+}
+
+a:link,
+a:visited {
+    color: #10284e;
+}
+
+div.breadcrumbs {
+    background: #C0C0C0;
+    color: #10284e;
+}
+
+div.breadcrumbs a {
+    color: #333;
+}
+
+.module {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch; /* Ensures children take up the full width */
+}
+
+.module h2, .module caption, .inline-group h2 {
+    background: #C0C0C0;
+    min-width: 20rem;  /* Equivalent to 100px if the root font size is 16px */
+    display: block;
+    box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
+    width: auto;  /* Allows the width to grow beyond the minimum width if necessary */
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+    .module h2, .module caption, .inline-group h2 {
+        min-width: 6.25rem;  /* Adjust minimum width for smaller screens */
+    }
+
+    #header {
+        height: auto; /* Allow the header to adjust height for smaller screens */
+        flex-direction: column; /* Stack items vertically */
+        align-items: center; /* Center items horizontally */
+        padding: 10px; /* Adjust padding */
+    }
+
+    #header img {
+        max-width: 80%; /* Scale image width to 80% of container */
+        height: auto; /* Maintain aspect ratio */
+    }
+
+    #branding h1 {
+        font-size: 1.2rem; /* Adjust font size for smaller screens */
+        text-align: center; /* Center the text */
+    }
+}
+
+.button, input[type=submit], input[type=button], .submit-row input, a.button {
+    background: #10284e;
+    color: #fff;
+}
